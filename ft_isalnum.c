@@ -6,19 +6,11 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/28 14:14:14 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/28 16:16:34 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/09/29 10:48:27 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
-{
-	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
-}
-
-int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
+#include "libft.h"
 
 int	ft_isalnum(int c)
 {
