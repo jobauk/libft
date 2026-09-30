@@ -6,28 +6,18 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/29 13:57:18 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/29 14:41:01 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/09/29 18:22:05 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-size_t	ft_strlen_cap(const char *str, size_t cap)
+static size_t	ft_strlen_cap(const char *str, size_t cap)
 {
 	size_t	n;
 
 	n = 0;
 	while (str[n] && cap--)
-		n++;
-	return (n);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	n;
-
-	n = 0;
-	while (*str++)
 		n++;
 	return (n);
 }

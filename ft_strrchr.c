@@ -23,14 +23,17 @@ char	*ft_strrchr(const char *s, int c)
 			last = s;
 		s++;
 	}
+	if (*s == c)
+		return (s);
 	return (last);
 }
 
 // #include <stdio.h>
-
+//
 // int main()
 // {
 // 	printf("<%s>\n", ft_strrchr("Hello, world", ','));
 // 	printf("<%s>\n", ft_strrchr("Hello, world", 'x'));
 // 	printf("<%s>\n", ft_strrchr("Hello, world", 'l'));
+// 	printf("<\\%x>\n", *ft_strrchr("Hello, world", '\0'));
 // }
