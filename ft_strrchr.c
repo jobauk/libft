@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*last;
+	const char	*last;
 
 	last = NULL;
 	while (*s)
@@ -24,8 +24,8 @@ char	*ft_strrchr(const char *s, int c)
 		s++;
 	}
 	if (*s == c)
-		return (s);
-	return (last);
+		return ((char *)s);
+	return ((char *)last);
 }
 
 // #include <stdio.h>

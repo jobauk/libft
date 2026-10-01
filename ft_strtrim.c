@@ -25,7 +25,7 @@ static char	*strtrim_start(const char *s1, const char *set)
 {
 	while (str_has(set, *s1))
 		s1++;
-	return (s1);
+	return ((char *)s1);
 }
 
 static char	*strtrim_end(const char *s1, const char *set)

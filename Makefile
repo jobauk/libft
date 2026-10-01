@@ -1,24 +1,21 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
-#                                                      +:+                     #
-#    By: jaukes <jaukes@student.codam.nl>             +#+                      #
-#                                                    +#+                       #
-#    Created: 2026/09/28 14:03:36 by jaukes        #+#    #+#                  #
-#    Updated: 2026/09/30 17:07:18 by jaukes        ########   odam.nl          #
-#                                                                              #
-# **************************************************************************** #
-
+CC := cc
+CFLAGS := -Wall -Wextra -Werror -c
 NAME := libft.a
+TARGETS := $(wildcard *.c)
+OBJS := $(TARGETS:.c=.o)
 
-all:
-	cc -Wall -Wextra -Werror -c *.c
+all: libft.a
+
+libft.a: $(OBJS)
+	ar rcs $(NAME) $^
+
+$(OBJS): %.o: %.c
+	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
-	rm -f *.o
+	rm -f $(OBJS)
 
-fclean:
+fclean: clean
+	rm -f $(NAME)
 
-re:
-
+re: fclean all
