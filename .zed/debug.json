@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Debug native binary",
+    "build": {
+      "command": "make OUTDIR=build && cc -o build/out build/\"$(sed -n 's/^[[:space:]]*NAME[[:space:]]*:=[[:space:]]*//p' Makefile)\"",
+      "cwd": "${ZED_WORKTREE_ROOT}",
+    },
+    "program": "${ZED_WORKTREE_ROOT}/build/out",
+    "request": "launch",
+    "adapter": "CodeLLDB",
+  },
+]
