@@ -24,41 +24,48 @@ static size_t	calc_len(char const *s, char c)
 	return (len + 1);
 }
 
+static void	*arr_free(char **arr, size_t len)
+{
+	while (len--)
+		free(arr[len]);
+	free(arr);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
-	size_t		len;
 	size_t		i;
+	size_t		len;
 	char const	*start;
 	char		**arr;
 
-	len = calc_len(s, c);
 	i = 0;
+	len = calc_len(s, c);
 	start = s;
 	arr = malloc((len + 1) * sizeof(char *));
 	if (!arr)
 		return (NULL);
-	while (*s)
+	while (i < len)
 	{
-		if (*s == c)
+		if (!*s || *s == c)
 		{
-			arr[i] = malloc((s - start + 1) * sizeof(char));
-			ft_strlcpy(arr[i++], start, (s - start + 1) * sizeof(char));
+			arr[i] = ft_substr(start, 0, (s - start) * sizeof(char));
+			if (!arr[i++])
+				return (arr_free(arr, i));
 			start = s + 1;
 		}
 		s++;
 	}
-	arr[i] = malloc((s - start + 1) * sizeof(char));
-	ft_strlcpy(arr[i++], start, (s - start + 1) * sizeof(char));
 	arr[i] = NULL;
-
-	return arr;
+	return (arr);
 }
 
 // #include <stdio.h>
-//
+
 // int main() {
 // 	ft_split("hello world test", ' ');
-//
+// 	// ft_split("   hello world  test ", ' ');
+
 // 	// printf("%ld\n", calc_len("Hello, world", ' '));
 // 	// printf("%ld\n", calc_len("   Hello, x  world ", ' '));
 // 	// printf("%ld\n", calc_len("Hello, world ", ' '));
