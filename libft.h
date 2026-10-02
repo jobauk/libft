@@ -17,7 +17,7 @@
 
 int		ft_atoi(const char *str);
 
-void	bzero(void *s, size_t n);
+void	ft_bzero(void *s, size_t n);
 
 void	*ft_calloc(size_t nmemb, size_t size);
 
