@@ -30,8 +30,8 @@ Test(libft, ft_split)
 			NULL
 	    };
 
-	    cr_assert(eq(str[7], actual, expected));
-		cr_assert(zero(actual[7]));
+	    cr_assert(eq(str[8], actual, expected));
+		cr_assert(zero(actual[8]));
 	}
 	{
 		char **actual = ft_split("", ' ');
