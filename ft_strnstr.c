@@ -32,7 +32,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 // #include <stdio.h>
 
 // int main() {
-// 	printf("<%s>\n", ft_strnstr("Hellx, Helo, Hello", "llo", 19));
-// 	printf("<%s>\n", ft_strnstr("Hellx, Helo, Hello", "llo", 10));
-// 	printf("<%s>\n", ft_strnstr("Hellx, Helo, Hello", "llox", 19));
+// 	printf("<%s>\n", ft_strnstr("hello", "", 5));
+// 	printf("<%s>\n", ft_strnstr("hello", "", 0));
+// 	printf("<%s>\n", ft_strnstr("hello", "h", 0));
+// 	printf("<%s>\n", ft_strnstr("abcabc", "abc", 6));
+// 	printf("<%s>\n", ft_strnstr("hello world", "world", 11));
+// 	printf("<%s>\n", ft_strnstr("hello world", "hello", 11));
 // }
