@@ -1,5 +1,6 @@
 CC := cc
-CFLAGS := -Wall -Wextra -Werror -g3
+CFLAGS := -Wall -Wextra -Werror
+DEBUG_FLAGS := -g3 -fno-omit-frame-pointer -fsanitize=address,undefined
 OUTDIR := .
 UNAME_S := $(shell uname -s)
 NAME := libft.a
@@ -17,7 +18,7 @@ all: $(OUTDIR)/$(NAME)
 
 # Debugging
 test: build-lib
-	@$(CC) $(CFLAGS) -Ltarget .tests/*.c -lcriterion -lft -o target/test || true
+	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) -Ltarget .tests/*.c -lcriterion -lft -o target/test || true
 	@target/test || true
 	@$(MAKE) -s fclean OUTDIR=target
 	@rm -rf target/test*
@@ -29,12 +30,13 @@ run: build
 
 debug: build
 	@$(DEBUGGER) target/$(NAME_STEM)
+	@rm -rf target/*
 
 build: build-lib
-	@$(CC) $(CFLAGS) target/$(NAME) -o target/$(NAME_STEM)
+	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) target/$(NAME) -o target/$(NAME_STEM)
 
 build-lib:
-	@$(MAKE) -s OUTDIR=target
+	@$(MAKE) -s OUTDIR=target CFLAGS="$(CFLAGS) $(DEBUG_FLAGS)"
 
 # Required
 $(OUTDIR)/$(NAME): $(OBJS) | $(OUTDIR)
