@@ -11,13 +11,27 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <errno.h>
+#include <sys/errno.h>
+
+static size_t	ckd_mul(size_t a, size_t b) {
+	if (b && a > SIZE_MAX / b)
+		return (0);
+	return (a * b);
+}
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
+	size_t	n;
 	void	*ptr;
 
-	ptr = malloc(nmemb * size);
-	if (ptr)
-		ft_memset(ptr, '\0', nmemb * size);
+	n = ckd_mul(nmemb, size);
+	if (!n)
+	{
+		errno = ENOMEM;
+		return (NULL);
+	}
+	ptr = malloc(n);
+	ft_memset(ptr, 0x0, n);
 	return (ptr);
 }
