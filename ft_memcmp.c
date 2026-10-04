@@ -21,12 +21,10 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	us2 = (unsigned char *)s2;
 	while (n--)
 	{
+		if (*us1 != *us2)
+			return (*us1 - *us2);
 		us1++;
 		us2++;
 	}
-	if (*us1 < *us2)
-		return (-1);
-	else if (*us1 > *us2)
-		return (1);
 	return (0);
 }
