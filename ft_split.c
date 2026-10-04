@@ -64,10 +64,7 @@ char	**ft_split(char const *s, char c)
 
 // int main() {
 // 	ft_split("hello world test", ' ');
-// 	// ft_split("   hello world  test ", ' ');
+// 	ft_split("   hello world  test ", ' ');
 
-// 	// printf("%ld\n", calc_len("Hello, world", ' '));
-// 	// printf("%ld\n", calc_len("   Hello, x  world ", ' '));
-// 	// printf("%ld\n", calc_len("Hello, world ", ' '));
-// 	// printf("%ld\n", calc_len("Hello, world", '\0'));
+// 	ft_split("", ',');
 // }
