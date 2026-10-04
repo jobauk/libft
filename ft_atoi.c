@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+static int	ft_isspace(char c)
+{
+	return ((c >= '\t' && c <= '\r') || c == ' ');
+}
+
 int	ft_atoi(const char *str)
 {
 	int	total;
@@ -17,6 +22,8 @@ int	ft_atoi(const char *str)
 
 	total = 0;
 	sign = 1;
+	while (ft_isspace(*str))
+		str++;
 	if (*str == '-')
 		sign = -1;
 	if (*str == '-' || *str == '+')
