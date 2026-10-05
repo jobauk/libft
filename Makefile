@@ -1,49 +1,77 @@
+# Compiler
 CC := cc
 CFLAGS := -Wall -Wextra -Werror
-DEBUG_FLAGS := -g3 -fno-omit-frame-pointer -fsanitize=address,undefined
-OUTDIR := .
-UNAME_S := $(shell uname -s)
+
+# Compiler debug
+LD_FLAGS := -fsanitize=address,undefined
+DEBUG_CFLAGS := $(CFLAGS) -g3 -O0 -fno-omit-frame-pointer $(LD_FLAGS)
+
+# Library
 NAME := libft.a
 NAME_STEM := $(basename $(NAME))
-TARGETS := $(wildcard *.c)
-OBJS := $(TARGETS:%.c=$(OUTDIR)/%.o)
 
-ifeq ($(UNAME_S),Darwin)
+OUTDIR := .
+DEBUG_OUTDIR := target
+
+# Source
+SRCS := $(wildcard *.c)
+OBJS := $(SRCS:%.c=$(OUTDIR)/%.o)
+
+DEBUG_OBJS := $(SRCS:%.c=$(DEBUG_OUTDIR)/%.o)
+
+TEST_SRCS := $(wildcard .tests/*.c)
+TEST_OBJS := $(TEST_SRCS:.tests/%.c=$(DEBUG_OUTDIR)/tests/%.o)
+
+# Output
+TEST_BIN := $(DEBUG_OUTDIR)/test
+RUN_BIN := $(DEBUG_OUTDIR)/$(NAME_STEM)
+
+# Debugger
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S), Darwin)
 	DEBUGGER := lldb
 else
 	DEBUGGER := gdb
 endif
 
+# Criterion
+CRITERION_CFLAGS := $(shell pkg-config --cflags criterion)
+CRITERION_LIBS := $(shell pkg-config --libs criterion)
+
+# Default
 all: $(OUTDIR)/$(NAME)
 
-# Debugging
-test: build-lib
-	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) -Ltarget .tests/*.c -lcriterion -lft -o target/test || true
-	@target/test || true
-	@$(MAKE) -s fclean OUTDIR=target
-	@rm -rf target/test*
+# Utility commands
+test: $(TEST_BIN)
+	@./$(TEST_BIN) $(if $(FILTER), --filter "'$(FILTER)'")
 
-run: build
-	@target/$(NAME_STEM) || true
-	@$(MAKE) -s fclean
-	@rm -f target/$(NAME_STEM)
+run: $(RUN_BIN)
+	@./$(RUN_BIN)
 
-debug: build
-	@$(DEBUGGER) target/$(NAME_STEM)
-	@rm -rf target/*
+debug: $(RUN_BIN)
+	@$(DEBUGGER) $(RUN_BIN)
 
-build: build-lib
-	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) target/$(NAME) -o target/$(NAME_STEM)
+$(DEBUG_OUTDIR)/%.o: %.c Makefile
+	@mkdir -p $(dir $@)
+	@$(CC) $(DEBUG_CFLAGS) -c $< -o $@
 
-build-lib:
-	@$(MAKE) -s OUTDIR=target CFLAGS="$(CFLAGS) $(DEBUG_FLAGS)"
+$(DEBUG_OUTDIR)/tests/%.o: .tests/%.c Makefile
+	@mkdir -p $(dir $@)
+	@$(CC) $(DEBUG_CFLAGS) $(CRITERION_CFLAGS) -c $< -o $@
 
-# Required
+$(TEST_BIN): $(DEBUG_OBJS) $(TEST_OBJS)
+	@$(CC) $(LD_FLAGS) $^ $(CRITERION_LIBS) -o $@
+
+$(RUN_BIN): $(DEBUG_OBJS)
+	@$(CC) $(LD_FLAGS) $^ -o $@
+
+# Required commands
 $(OUTDIR)/$(NAME): $(OBJS) | $(OUTDIR)
-	ar rcs $@ $?
+	ar rcs $@ $(OBJS)
 
 $(OUTDIR)/%.o: %.c | $(OUTDIR)
-	$(CC) $(CFLAGS) -c $^ -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OUTDIR):
 	mkdir -p $@
