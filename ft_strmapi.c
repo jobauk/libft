@@ -26,18 +26,19 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		buf[i] = f(i, s[i]);
 		i++;
 	}
+	buf[i] = '\0';
 	return (buf);
 }
 
 // #include <stdio.h>
-//
+
 // char capitalize(unsigned int i, char c)
 // {
 // 	if (i == 0)
 // 		return (ft_toupper(c));
 // 	return (c);
 // }
-//
+
 // int main() {
 // 	printf("<%s>\n", ft_strmapi("hello, world", capitalize));
 // }
