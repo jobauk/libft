@@ -14,7 +14,7 @@ Test(ft_memset, fills_buf) {
 		8
 	};
 
-	cr_assert(eq(ptr, ft_memset((void *)actual.data, 0x42, sizeof(actual.data)), actual.data));
+	cr_assert(eq(ptr, ft_memset((void *)actual.data, 0x42, sizeof(actual.data)), (void *)actual.data));
 	cr_assert(eq(mem, actual, expected));
 }
 
@@ -22,6 +22,6 @@ Test(ft_memset, zero_len) {
 	struct cr_mem actual = { (unsigned char[4]){1, 2, 3, 4}, 4 };
 	struct cr_mem expected = { (unsigned char[4]){1, 2, 3, 4}, 4 };
 
-	cr_assert(eq(ptr, ft_memset((void *)actual.data, 0xff, 0), actual.data));
+	cr_assert(eq(ptr, ft_memset((void *)actual.data, 0xff, 0), (void *)actual.data));
 	cr_assert(eq(mem, actual, expected));
 }
