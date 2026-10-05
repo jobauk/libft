@@ -8,6 +8,7 @@ Test(ft_calloc, allocates_zeroed_buf) {
 	struct cr_mem actual = { .data = ft_calloc(4, 1), .size = 4 };
 	struct cr_mem expected = { .data = (unsigned char[4]){}, .size = 4 };
 	cr_assert(eq(mem, actual, expected));
+	free((void *)actual.data);
 }
 
 Test(ft_calloc, returns_null_on_zero) {

@@ -4,11 +4,18 @@
 
 TestSuite(ft_split, .timeout = 5);
 
+static void free_arr(char **arr) {
+	for (int i = 0; arr[i]; i++)
+		free(arr[i]);
+	free(arr);
+}
+
 Test(ft_split, empty_input) {
 	char **actual = ft_split("", ',');
 	char *expected[] = {""};
 
 	cr_assert(all(eq(str[1], actual, expected), zero(ptr, actual[1])));
+	free_arr(actual);
 }
 
 Test(ft_split, no_seperator) {
@@ -16,6 +23,7 @@ Test(ft_split, no_seperator) {
 	char *expected[] = {"abc", NULL};
 
 	cr_assert(all(eq(str[1], actual, expected), zero(ptr, actual[1])));
+	free_arr(actual);
 }
 
 Test(ft_split, null_seperator) {
@@ -23,6 +31,7 @@ Test(ft_split, null_seperator) {
 	char *expected[] = {"abc", NULL};
 
 	cr_assert(all(eq(str[1], actual, expected), zero(ptr, actual[1])));
+	free_arr(actual);
 }
 
 Test(ft_split, single_separator) {
@@ -30,6 +39,7 @@ Test(ft_split, single_separator) {
 	char *expected[] = {"a", "b", NULL};
 
 	cr_assert(all(eq(str[2], actual, expected), zero(ptr, actual[2])));
+	free_arr(actual);
 }
 
 Test(ft_split, leading_separator) {
@@ -37,6 +47,7 @@ Test(ft_split, leading_separator) {
 	char *expected[] = {"", "a", NULL};
 
 	cr_assert(all(eq(str[2], actual, expected), zero(ptr, actual[2])));
+	free_arr(actual);
 }
 
 Test(ft_split, trailing_separator) {
@@ -44,6 +55,7 @@ Test(ft_split, trailing_separator) {
 	char *expected[] = {"a", "", NULL};
 
 	cr_assert(all(eq(str[2], actual, expected), zero(ptr, actual[2])));
+	free_arr(actual);
 }
 
 Test(ft_split, consecutive_separators) {
@@ -51,6 +63,7 @@ Test(ft_split, consecutive_separators) {
 	char *expected[] = {"a", "", "b", NULL};
 
 	cr_assert(all(eq(str[3], actual, expected), zero(ptr, actual[3])));
+	free_arr(actual);
 }
 
 Test(ft_split, only_separators) {
@@ -58,6 +71,7 @@ Test(ft_split, only_separators) {
 	char *expected[] = {"", "", "", "", NULL};
 
 	cr_assert(all(eq(str[4], actual, expected), zero(ptr, actual[4])));
+	free_arr(actual);
 }
 
 Test(ft_split, multiple_separators) {
@@ -65,4 +79,5 @@ Test(ft_split, multiple_separators) {
 	char *expected[] = {"a", "b", "c", NULL};
 
 	cr_assert(all(eq(str[3], actual, expected), zero(ptr, actual[3])));
+	free_arr(actual);
 }
