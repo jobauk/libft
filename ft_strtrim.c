@@ -35,7 +35,7 @@ static char	*strtrim_end(const char *s1, const char *set)
 	char	*str;
 
 	len = ft_strlen(s1);
-	while (str_has(set, s1[len - 1]))
+	while (len && str_has(set, s1[len - 1]))
 		len--;
 	size = len + 1;
 	str = malloc(size * sizeof(char));
