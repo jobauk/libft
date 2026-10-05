@@ -35,10 +35,34 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 // #include <bsd/string.h>
 //
 // int main() {
-// 	printf("<%s>\t\t<%s>\n", ft_strnstr("hello", "", 5), strnstr("hello", "", 5));
-// 	printf("<%s>\t\t<%s>\n", ft_strnstr("hello", "", 0), strnstr("hello", "", 0));
-// 	printf("<%s>\t<%s>\n", ft_strnstr("hello", "h", 0), strnstr("hello", "h", 0));
-// 	printf("<%s>\t<%s>\n", ft_strnstr("abcabc", "abc", 6), strnstr("abcabc", "abc", 6));
-// 	printf("<%s>\t\t<%s>\n", ft_strnstr("hello world", "world", 11), strnstr("hello world", "world", 11));
-// 	printf("<%s>\t<%s>\n", ft_strnstr("hello world", "hello", 11), strnstr("hello world", "hello", 11));
+// 	printf(
+// 		"<%s>\t\t<%s>\n",
+// 		ft_strnstr("hello", "", 5),
+// 		strnstr("hello", "", 5)
+// 	);
+// 	printf(
+// 		"<%s>\t\t<%s>\n",
+// 		ft_strnstr("hello", "", 0),
+// 		strnstr("hello", "", 0)
+// 	);
+// 	printf(
+// 		"<%s>\t<%s>\n",
+// 		ft_strnstr("hello", "h", 0),
+// 		strnstr("hello", "h", 0)
+// 	);
+// 	printf(
+// 		"<%s>\t<%s>\n",
+// 		ft_strnstr("abcabc", "abc", 6),
+// 		strnstr("abcabc", "abc", 6)
+// 	);
+// 	printf(
+// 		"<%s>\t\t<%s>\n",
+// 		ft_strnstr("hello world", "world", 11),
+// 		strnstr("hello world", "world", 11)
+// 	);
+// 	printf(
+// 		"<%s>\t<%s>\n",
+// 		ft_strnstr("hello world", "hello", 11),
+// 		strnstr("hello world", "hello", 11)
+// 	);
 // }
