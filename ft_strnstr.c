@@ -18,11 +18,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	j;
 
 	i = 0;
+	if (!little[i])
+		return ((char *)big);
 	while (big[i] && i < len)
 	{
 		j = 0;
 		while (i + j < len && big[i + j] == little[j])
-			if (!little[j++])
+			if (!little[++j])
 				return ((char *)(big + i));
 		i++;
 	}
@@ -30,12 +32,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 }
 
 // #include <stdio.h>
-
+// #include <bsd/string.h>
+//
 // int main() {
-// 	printf("<%s>\n", ft_strnstr("hello", "", 5));
-// 	printf("<%s>\n", ft_strnstr("hello", "", 0));
-// 	printf("<%s>\n", ft_strnstr("hello", "h", 0));
-// 	printf("<%s>\n", ft_strnstr("abcabc", "abc", 6));
-// 	printf("<%s>\n", ft_strnstr("hello world", "world", 11));
-// 	printf("<%s>\n", ft_strnstr("hello world", "hello", 11));
+// 	printf("<%s>\t\t<%s>\n", ft_strnstr("hello", "", 5), strnstr("hello", "", 5));
+// 	printf("<%s>\t\t<%s>\n", ft_strnstr("hello", "", 0), strnstr("hello", "", 0));
+// 	printf("<%s>\t<%s>\n", ft_strnstr("hello", "h", 0), strnstr("hello", "h", 0));
+// 	printf("<%s>\t<%s>\n", ft_strnstr("abcabc", "abc", 6), strnstr("abcabc", "abc", 6));
+// 	printf("<%s>\t\t<%s>\n", ft_strnstr("hello world", "world", 11), strnstr("hello world", "world", 11));
+// 	printf("<%s>\t<%s>\n", ft_strnstr("hello world", "hello", 11), strnstr("hello world", "hello", 11));
 // }
