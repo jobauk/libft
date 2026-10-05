@@ -12,7 +12,7 @@
 
 #include "libft.h"
 #include <errno.h>
-#include <sys/errno.h>
+#include <stdint.h>
 
 static size_t	ckd_mul(size_t a, size_t b) {
 	if (b && a > SIZE_MAX / b)
