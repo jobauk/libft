@@ -12,60 +12,39 @@
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+static t_list	*ft_lstpush(t_list **lst, void *content)
 {
-	t_list	*start;
-	t_list	*head;
-	t_list	*cur;
-	t_list	*next;
-	(void)del;
+	t_list	*new;
 
-	start = ft_lstnew(f(lst->content));
-	cur = lst->next;
-	head = start;
-	free(lst);
-	while (cur)
-	{
-		next = cur->next;
-		head->next = ft_lstnew(f(cur->content));
-		free(cur);
-		cur = next;
-		head = head->next;
-	}
-	return (start);
+	new = ft_lstnew(content);
+	if (*lst && new)
+		(*lst)->next = new;
+	return (new);
 }
 
-// #include <stdio.h>
-//
-// static void print_lst_item(void *content) {
-// 	printf("  \"%s\",\n", (char *)content);
-// }
-//
-// static void *to_upper(void *content) {
-// 	char *str;
-//
-// 	str = content;
-// 	while (*str) {
-// 		*str = ft_toupper(*str);
-// 		str++;
-// 	}
-// 	return (content);
-// }
-//
-// int main() {
-// 	t_list *start = ft_lstnew(ft_strdup("hello"));
-// 	start->next = ft_lstnew(ft_strdup("world"));
-// 	start->next->next = ft_lstnew(ft_strdup("test"));
-//
-// 	printf("[\n");
-// 	ft_lstiter(start, print_lst_item);
-// 	printf("]\n");
-//
-// 	t_list *mapped = ft_lstmap(start, to_upper, free);
-//
-// 	printf("[\n");
-// 	ft_lstiter(mapped, print_lst_item);
-// 	printf("]\n");
-//
-// 	ft_lstclear(&mapped, free);
-// }
+// Should I do `del(content)` on failure knowing that 'content'
+// might still be owned by the old list and thus invalidating it?
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*tail;
+	t_list	*new_lst;
+	void	*content;
+
+	tail = NULL;
+	new_lst = NULL;
+	while (lst)
+	{
+		content = f(lst->content);
+		tail = ft_lstpush(&tail, content);
+		if (!tail)
+		{
+			del(content);
+			ft_lstclear(&new_lst, del);
+			return (NULL);
+		}
+		if (!new_lst)
+			new_lst = tail;
+		lst = lst->next;
+	}
+	return (new_lst);
+}
