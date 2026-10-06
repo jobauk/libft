@@ -44,7 +44,7 @@ all: $(OUTDIR)/$(NAME)
 
 # Utility commands
 test: $(TEST_BIN)
-	@./$(TEST_BIN) $(if $(FILTER), --filter '$(FILTER)')
+	@./$(TEST_BIN) $(if $(FILTER),--filter "$(FILTER)")
 
 run: $(RUN_BIN)
 	@./$(RUN_BIN)
