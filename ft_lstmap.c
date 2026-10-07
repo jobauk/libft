@@ -32,7 +32,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	tail = NULL;
 	new_lst = NULL;
-	while (lst)
+	while (lst && f)
 	{
 		content = f(lst->content);
 		tail = ft_lstpush(&tail, content);
