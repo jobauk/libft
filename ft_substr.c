@@ -11,15 +11,14 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stddef.h>
+#include <stdint.h>
 
-static size_t	ft_strlen_cap(const char *str, size_t cap)
+static size_t	min(size_t a, size_t b)
 {
-	size_t	n;
-
-	n = 0;
-	while (str[n] && cap--)
-		n++;
-	return (n);
+	if (a < b)
+		return (a);
+	return (b);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -27,7 +26,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	substr_len;
 	char	*substr;
 
-	substr_len = ft_strlen_cap(s + start, len);
+	substr_len = ft_strlen(s);
+	if (start <= substr_len)
+		substr_len = min(substr_len - start, len);
+	else
+	{
+		start = substr_len;
+		substr_len = 0;
+	}
 	substr = (char *)malloc((substr_len + 1) * sizeof(char));
 	if (substr)
 		ft_strlcpy(substr, s + start, substr_len + 1);
@@ -42,5 +48,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 // 	printf("%s\n", ft_substr(str, 0, 5));
 // 	printf("%s\n", ft_substr(str, 1, 5));
 // 	printf("%s\n", ft_substr(str, 7, 5));
-// 	printf("%s\n", ft_substr(str, 3, 10));
+// 	printf("%s\n", ft_substr(str, 3, -1));
+// 	printf("%s\n", ft_substr(str, 25, 5));
 // }
