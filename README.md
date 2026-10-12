@@ -43,7 +43,7 @@ make norm
 ```
 
 ## Resources
-Man pages
+Mainly the man pages, peers, and Stack Overflow. No AI was used in this project.
 
 ### String utilities
 ft_isalnum.c
