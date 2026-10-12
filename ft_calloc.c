@@ -14,25 +14,26 @@
 #include <errno.h>
 #include <stdint.h>
 
-static size_t	ckd_mul(size_t a, size_t b)
+static ssize_t	ckd_mul(size_t a, size_t b)
 {
 	if (b && a > SIZE_MAX / b)
-		return (0);
+		return (-1);
 	return (a * b);
 }
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	n;
+	ssize_t	n;
 	void	*ptr;
 
 	n = ckd_mul(nmemb, size);
-	if (!n)
+	if (n == -1)
 	{
 		errno = ENOMEM;
 		return (NULL);
 	}
 	ptr = malloc(n);
-	ft_memset(ptr, 0x0, n);
+	if (ptr)
+		ft_memset(ptr, 0x0, n);
 	return (ptr);
 }
