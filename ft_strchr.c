@@ -14,9 +14,9 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s && *s != c)
+	while (*s && *s != (char)c)
 		s++;
-	if (*s == c)
+	if (*s == (char)c)
 		return ((char *)s);
 	return (NULL);
 }
@@ -25,6 +25,8 @@ char	*ft_strchr(const char *s, int c)
 //
 // int main()
 // {
+// 	printf("<%s>\n", ft_strchr("teste", 't' + 256));
+// 	printf("<%s>\n", ft_strchr("teste", 'e'));
 // 	printf("<%s>\n", ft_strchr("Hello, world", ','));
 // 	printf("<%s>\n", ft_strchr("Hello, world", 'x'));
 // 	printf("<%s>\n", ft_strchr("Hello, world", 'l'));
