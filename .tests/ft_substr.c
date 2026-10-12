@@ -52,13 +52,13 @@ Test(ft_substr, null_terminator)
     free(result);
 }
 
-// Test(ft_substr, start_oob)
-// {
-//     char *result = ft_substr("hello", 100, 3);
-//
-//     cr_assert(eq(str, result, ""));
-//     free(result);
-// }
+Test(ft_substr, start_oob)
+{
+    char *result = ft_substr("hello", 100, 3);
+
+    cr_assert(eq(str, result, ""));
+    free(result);
+}
 
 Test(ft_substr, zero_len)
 {
