@@ -13,6 +13,7 @@
 #include "libft.h"
 #include <errno.h>
 #include <stdint.h>
+#include <sys/types.h>
 
 static ssize_t	ckd_mul(size_t a, size_t b)
 {
