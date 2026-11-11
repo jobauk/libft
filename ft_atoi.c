@@ -6,9 +6,11 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/29 17:07:34 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/29 17:39:25 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/11 21:37:27 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 static int	ft_isspace(char c)
 {

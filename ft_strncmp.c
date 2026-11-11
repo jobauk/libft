@@ -6,10 +6,11 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/29 14:58:07 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/29 15:54:22 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/11 21:40:03 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

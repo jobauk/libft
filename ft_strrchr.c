@@ -6,10 +6,11 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/29 14:54:10 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/29 14:57:53 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/11 21:40:18 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 char	*ft_strrchr(const char *s, int c)

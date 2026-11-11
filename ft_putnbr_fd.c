@@ -6,10 +6,11 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/29 14:41:24 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/29 14:47:45 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/11 21:39:28 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <unistd.h>
 
 static int	ft_abs(int n)

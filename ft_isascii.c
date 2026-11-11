@@ -6,9 +6,11 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/28 16:14:31 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/28 16:16:21 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/11 21:37:52 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isascii(int c)
 {

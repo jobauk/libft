@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_itoa.c                                       :+:    :+:            */
+/*   ft_itoa.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/29 14:41:24 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/29 14:47:45 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/11 21:38:25 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <limits.h>
 #include <stddef.h>
 #include <stdlib.h>

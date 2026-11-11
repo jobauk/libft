@@ -6,9 +6,11 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/28 14:14:14 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/29 10:48:56 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/11 21:37:43 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {

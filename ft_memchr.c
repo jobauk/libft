@@ -6,10 +6,11 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/29 15:54:36 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/29 16:10:44 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/11 21:38:38 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 void	*ft_memchr(const void *s, int c, size_t n)
