@@ -6,13 +6,14 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/29 10:39:54 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/20 16:20:17 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/22 20:26:58 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stddef.h>
 # include <stdlib.h>
 
 typedef struct s_list
@@ -64,6 +65,8 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_tolower(int c);
 
 int		ft_toupper(int c);
+
+size_t	ft_strcspn(const char *s, const char *charset);
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 
