@@ -6,36 +6,37 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/11/22 20:25:54 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/22 20:26:38 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/23 23:11:57 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stddef.h>
 
-size_t	ft_strcspn(const char *s, const char *charset)
+size_t	ft_strcspn(const char *s, const char *c)
 {
-	size_t			size_t_bits;
-	size_t			tab[32 / sizeof(size_t)];
-	size_t			i;
-	unsigned char	c;
+	const unsigned char	*u;
+	size_t				tab[__FT_SPAN_TABSZ];
+	size_t				i;
 
-	size_t_bits = (256 / (32 / sizeof(size_t)));
 	i = 0;
-	while (i < sizeof(tab) / sizeof(size_t))
+	u = (unsigned char *)s;
+	if (!c[0] || !c[1])
+		return ((size_t)(ft_strchrnul(s, *c) - s));
+	while (i < sizeof(tab) / sizeof(*tab))
 		tab[i++] = 0;
 	tab[0] = 1;
-	while (*charset)
+	while (*c)
 	{
-		c = *(unsigned char *)charset++;
-		tab[c / size_t_bits] |= (size_t)1 << (c % size_t_bits);
+		tab[*(unsigned char *)c / __FT_SPAN_BITS]
+			|= (size_t)1 << (*(unsigned char *)c % __FT_SPAN_BITS);
+		c++;
 	}
-	i = 0;
 	while (1)
 	{
-		c = (unsigned char)s[i];
-		if (tab[c / size_t_bits] & ((size_t)1 << ((size_t)c % size_t_bits)))
+		if (tab[*u / __FT_SPAN_BITS] & ((size_t)1 << (*u % __FT_SPAN_BITS)))
 			break ;
-		i++;
+		u++;
 	}
-	return (i);
+	return ((size_t)((char *)u - s));
 }
