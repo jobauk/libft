@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/29 10:39:54 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/11/22 20:26:58 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/23 23:10:15 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+enum e_ft_span_constants__
+{
+	__FT_SPAN_TABSZ = 32 / sizeof(size_t),
+	__FT_SPAN_BITS = 256 / (__FT_SPAN_TABSZ)
+};
 
 char	**ft_split(char const *s, char c);
 
@@ -38,9 +44,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 
 char	*ft_strrchr(const char *s, int c);
 
+char	*ft_strchrnul(const char *s, int c);
+
 char	*ft_strtrim(char const *s1, char const *set);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+char	*ft_strtok(char *s, const char *sep);
 
 int		ft_atoi(const char *str);
 
@@ -66,13 +76,15 @@ int		ft_tolower(int c);
 
 int		ft_toupper(int c);
 
-size_t	ft_strcspn(const char *s, const char *charset);
+size_t	ft_strcspn(const char *s, const char *c);
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 size_t	ft_strlen(const char *s);
+
+size_t	ft_strspn(const char *s, const char *c);
 
 t_list	*ft_lstlast(t_list *lst);
 
