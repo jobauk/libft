@@ -6,7 +6,7 @@
 /*   By: jaukes <jaukes@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/09/29 17:51:41 by jaukes        #+#    #+#                 */
-/*   Updated: 2026/09/30 17:03:08 by jaukes        ########   odam.nl         */
+/*   Updated: 2026/11/25 20:45:33 by jaukes        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ static size_t	calc_len(char const *s, char c)
 		s++;
 	}
 	return (len);
-}
-
-static char	*ft_strchrnul(const char *s, int c)
-{
-	while (*s && *s != c)
-		s++;
-	return ((char *)s);
 }
 
 static void	*arr_free(char **arr, size_t len)
